@@ -1,0 +1,88 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+	<div class="w3l_banner_info" style="height:10px">
+		<div class="slider1">
+			<div class="callbacks_container">
+				<ul class="rslides" id="slider3">
+					<li>
+						<div class="slider1-img" style="height:90px">
+							<div class="slider_banner_info">
+
+
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- //banner-slider -->
+</div>
+</header>
+<div class="container" style="margin-top: 10em;">
+	{% if user.is_authenticated %}
+    {% if error == "pat" %}
+        <!-- Display content for customers -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="h1">Add Our Services</h5>
+                        <p class="">Explore the best in home services</p>
+                        <a href="{% url 'service' %}" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="h1">My Bookings</h5>
+                        <p class="">Access Your bookings Bookings</p>
+                        <a href="{% url 'customer_order' %}" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <!-- Display content for staff -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="h1">Application List for Service Calls</h5>
+                        <p class="">Access you list</p>
+                        <a href="{% url 'service_order' %}" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="h1">My Profile</h5>
+                        <p class="">Access Your Profile page</p>
+                        <a href="{% url 'service_profile' %}" class="btn btn-primary">Explore</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endif %}	
+</div>
+
+{% if terro == "message" %}
+<script>
+	alert('Your profile has not complted plz complete your profile now');
+	window.location = "{% url 'edit_service_profile' %}";
+</script>
+{% endif %}
+{% if terro == "message1" %}
+<script>
+	alert('profile verification  is  still pending,try after sometimes.');
+	window.location = "{% url 'logout' %}";
+</script>
+{% endif %}
+{% endblock %}
