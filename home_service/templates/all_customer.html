@@ -13,21 +13,25 @@
                                   <thead>
                                     <tr>
                                       <th>#</th>
-                                      <th>Full Name</th>
+                                      <th>Username</th>
                                       <th>Image</th>
                                       <th>Email</th>
                                       <th>Contact</th>
                                       <th>Address</th>
                                       <th>Action</th>
-                                  </tr>
-                              </thead>
+                                    </tr>
+                                  </thead>
                               <tbody>
                               {% for i in ser %}
                               {% if not i.user.is_staff %}
                                 <tr>
                                   <td>{{forloop.counter}}</td>
-                                  <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+                                  <td>{{i.user.username}}</td>
+                                  {% if i.image %}
                                   <td><img src="{{i.image.url}}" style="width:90px;height:80px" /></td>
+                                  {% else %}
+                                  <td>Image not uploaded</td>
+                                  {% endif %}
                                   <td>{{i.user.email}}</td>
                                   <td>{{i.contact}}</td>
                                   <td>{{i.address}}</td>
