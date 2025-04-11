@@ -44,7 +44,11 @@
             <strong>Image:</strong>
         </div>
         <div class="col-md-6">
+            {% if pro.image %}
             <img src="{{pro.image.url}}" style="width:100px;height:130px"></img>
+            {% else %}
+            <h2>No image uploaded</h2>
+            {% endif %}
         </div></div><hr>
 
     <div class="row">
